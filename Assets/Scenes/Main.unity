@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 84875017}
   - component: {fileID: 84875016}
   - component: {fileID: 84875015}
+  - component: {fileID: 84875020}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -554,52 +555,38 @@ MonoBehaviour:
   m_MoveObjectOut: 15
   m_DirectionalAnchorRotation: 1
   m_PoseProvider: {fileID: 0}
---- !u!1 &166858175
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 166858177}
-  - component: {fileID: 166858176}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &166858176
+--- !u!114 &84875020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166858175}
+  m_GameObject: {fileID: 84875013}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb293c3086887324a97d994b5d61a2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1712187546}
-  isTriggerPressed: 0
---- !u!4 &166858177
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166858175}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  triggerPressed: 0
+  padPressed: 0
+  gripped: 0
+  menuPressed: 0
+  triggerDown: 0
+  padDown: 0
+  gripDown: 0
+  menuDown: 0
+  triggerUp: 0
+  padUp: 0
+  gripUp: 0
+  menuUp: 0
+  padDirUp: 0
+  padDirDown: 0
+  padDirLeft: 0
+  padDirRight: 0
+  padDirCenter: 0
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  triggerVal: 0
 --- !u!1 &246673933
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +635,7 @@ Transform:
   m_Children:
   - {fileID: 1297130344}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347975219
 GameObject:
@@ -1123,7 +1110,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1712187540
 GameObject:
@@ -1139,6 +1126,7 @@ GameObject:
   - component: {fileID: 1712187544}
   - component: {fileID: 1712187543}
   - component: {fileID: 1712187542}
+  - component: {fileID: 1712187547}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -1556,6 +1544,38 @@ MonoBehaviour:
   m_MoveObjectOut: 15
   m_DirectionalAnchorRotation: 1
   m_PoseProvider: {fileID: 0}
+--- !u!114 &1712187547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712187540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb293c3086887324a97d994b5d61a2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerPressed: 0
+  padPressed: 0
+  gripped: 0
+  menuPressed: 0
+  triggerDown: 0
+  padDown: 0
+  gripDown: 0
+  menuDown: 0
+  triggerUp: 0
+  padUp: 0
+  gripUp: 0
+  menuUp: 0
+  padDirUp: 0
+  padDirDown: 0
+  padDirLeft: 0
+  padDirRight: 0
+  padDirCenter: 0
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  triggerVal: 0
 --- !u!1 &1868227168
 GameObject:
   m_ObjectHideFlags: 0
