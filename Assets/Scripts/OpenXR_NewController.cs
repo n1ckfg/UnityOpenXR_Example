@@ -28,7 +28,7 @@ public class OpenXR_NewController : MonoBehaviour {
 
     [HideInInspector] public Vector3 startPos = Vector3.zero;
     [HideInInspector] public Vector3 endPos = Vector3.zero;
-    [HideInInspector] public float triggerVal;
+    [HideInInspector] public float triggerVal = 0f;
 
     private XRController controller;
 
@@ -44,43 +44,43 @@ public class OpenXR_NewController : MonoBehaviour {
         checkPadDir();
 
         // https://docs.unity3d.com/ScriptReference/XR.CommonUsages.html
-        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool tb_pressed)) {
-            if (tb_pressed) {
+        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool input_triggerPressed)) {
+            if (input_triggerPressed && !triggerPressed) {
                 triggerPressed = true;
                 triggerDown = true;
                 startPos = transform.position;
-            } else if (triggerPressed) {
+            } else if (!input_triggerPressed && triggerPressed) {
                 triggerPressed = false;
                 triggerUp = true;
                 endPos = transform.position;
             }
         }
 
-        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool pad_pressed)) {
-            if (pad_pressed) {
+        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool input_padPressed)) {
+            if (input_padPressed & !padPressed) {
                 padPressed = true;
                 padDown = true;
-            } else if (padPressed) {
+            } else if (!input_padPressed && padPressed) {
                 padPressed = false;
                 padUp = true;
             }
         }
 
-        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.gripButton, out bool gb_pressed)) {
-            if (gb_pressed) {
+        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.gripButton, out bool input_gripped)) {
+            if (input_gripped & !gripped) {
                 gripped = true;
                 gripDown = true;
-            } else if (gripped) {
+            } else if (!input_gripped && gripped){
                 gripped = false;
                 gripUp = true;
             }
         }
 
-        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.menuButton, out bool mb_pressed)) {
-            if (mb_pressed) {
+        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.menuButton, out bool input_menuPressed)) {
+            if (input_menuPressed & !menuPressed) {
                 menuPressed = true;
                 menuDown = true;
-            } else if (menuPressed) {
+            } else if (!input_menuPressed && menuPressed) {
                 menuPressed = false;
                 menuUp = true;
             }
@@ -105,11 +105,15 @@ public class OpenXR_NewController : MonoBehaviour {
     }
 
     private void checkTriggerVal() {
-        //triggerVal = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x;
+        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out float tb_val)) {
+            triggerVal = tb_val;
+        }
     }
 
     private void checkPadDir() {
-        //touchpad = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_Axis0);
+        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 pad_dir_val)) {
+            touchpad = pad_dir_val;
+        }
 
         if (touchpad.y > touchPadLimit) {
             padDirUp = true;
