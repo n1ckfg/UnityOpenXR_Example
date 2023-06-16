@@ -71,7 +71,7 @@ public class OpenXR_WorldScale : MonoBehaviour {
         initialHandPosition2 = cltAlt.transform.position;
         initialObjectRotation = target.transform.rotation;
         initialObjectScale = target.transform.localScale;
-        initialObjectDirection = target.transform.position - (initialHandPosition1 + initialHandPosition2) * 0.5f; 
+        initialObjectDirection = target.transform.position - (initialHandPosition1 + initialHandPosition2) * 0.5f;
     }
 
     private void updateTargetBoth() {
@@ -82,7 +82,7 @@ public class OpenXR_WorldScale : MonoBehaviour {
         Vector3 handDir2 = (currentHandPosition1 - currentHandPosition2).normalized; // direction vector of current first and second hand position 
 
         Quaternion handRot = Quaternion.FromToRotation(handDir1, handDir2); // calculate rotation based on those two direction vectors
-        
+
         float currentGrabDistance = Vector3.Distance(currentHandPosition1, currentHandPosition2);
         float initialGrabDistance = Vector3.Distance(initialHandPosition1, initialHandPosition2);
         float p = (currentGrabDistance / initialGrabDistance); // percentage based on the distance of the initial positions and the new positions
@@ -91,7 +91,7 @@ public class OpenXR_WorldScale : MonoBehaviour {
 
         target.transform.rotation = handRot * initialObjectRotation; // add rotation
         target.transform.localScale = newScale; // set new scale
-        
+
         // set the position of the object to the center of both hands based on the original object direction relative to the new scale and rotation
         target.transform.position = (0.5f * (currentHandPosition1 + currentHandPosition2)) + (handRot * (initialObjectDirection * p));
     }
